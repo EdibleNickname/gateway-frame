@@ -33,6 +33,11 @@
             <scope>test</scope>
         </dependency>
 
+        <dependency>
+            <groupId>com.can</groupId>
+            <artifactId>gateway-service</artifactId>
+        </dependency>
+
     </dependencies>
 
     <build>
