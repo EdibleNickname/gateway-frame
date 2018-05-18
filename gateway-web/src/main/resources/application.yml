@@ -1,0 +1,5 @@
+
+# log
+logging:
+  file: web-frame.log
+  path: F:\\GitHub\\log\\gateway-frame
