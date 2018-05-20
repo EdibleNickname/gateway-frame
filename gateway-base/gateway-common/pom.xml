@@ -10,8 +10,9 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>gateway-dao</artifactId>
+    <artifactId>gateway-common</artifactId>
     <packaging>jar</packaging>
-    <name>gateway-dao</name>
+    <name>gateway-common</name>
+    <description>这个模块到时将以jar包的形式导入项目</description>
 
 </project>

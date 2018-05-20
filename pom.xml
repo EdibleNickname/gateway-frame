@@ -13,12 +13,19 @@
     <modelVersion>4.0.0</modelVersion>
     <packaging>pom</packaging>
 
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <java.version>1.8</java.version>
+    </properties>
+
     <modules>
         <module>gateway-web</module>
-        <module>gateway-base/gateway-dao</module>
+        <module>gateway-core</module>
         <module>gateway-base/gateway-provider</module>
-        <module>gateway-core/gateway-provider-impl</module>
-        <module>gateway-core/gateway-service</module>
+        <module>gateway-base/gateway-repository</module>
+        <module>gateway-base/gateway-config</module>
+        <module>gateway-base/gateway-common</module>
     </modules>
 
     <groupId>com.can</groupId>
@@ -36,13 +43,7 @@
 
             <dependency>
                 <groupId>com.can</groupId>
-                <artifactId>gateway-dao</artifactId>
-                <version>1.0-SNAPSHOT</version>
-            </dependency>
-
-            <dependency>
-                <groupId>com.can</groupId>
-                <artifactId>gateway-service</artifactId>
+                <artifactId>gateway-core</artifactId>
                 <version>1.0-SNAPSHOT</version>
             </dependency>
 
@@ -54,12 +55,48 @@
 
             <dependency>
                 <groupId>com.can</groupId>
-                <artifactId>gateway-provider-impl</artifactId>
+                <artifactId>gateway-repository</artifactId>
+                <version>1.0-SNAPSHOT</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.can</groupId>
+                <artifactId>gateway-config</artifactId>
+                <version>1.0-SNAPSHOT</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.can</groupId>
+                <artifactId>gateway-common</artifactId>
                 <version>1.0-SNAPSHOT</version>
             </dependency>
 
         </dependencies>
     </dependencyManagement>
+
+    <build>
+        <plugins>
+            <!-- 打包时跳过测试文件 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.18.1</version>
+                <configuration>
+                    <skipTests>true</skipTests>
+                </configuration>
+            </plugin>
+            <!-- 配置jdk版本 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.5.1</version>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
 
 </project>
