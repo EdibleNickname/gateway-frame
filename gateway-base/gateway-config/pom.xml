@@ -13,6 +13,7 @@
     <artifactId>gateway-config</artifactId>
     <packaging>jar</packaging>
     <name>gateway-config</name>
+    <description>这个模块,有计划包装成jar包，但是现在感觉设计模式不行，暂且以模块的形式存在</description>
 
     <dependencies>
 

@@ -21,8 +21,7 @@
 
     <modules>
         <module>gateway-web</module>
-        <module>gateway-core/gateway-provider-impl</module>
-        <module>gateway-core/gateway-service</module>
+        <module>gateway-core</module>
         <module>gateway-base/gateway-provider</module>
         <module>gateway-base/gateway-repository</module>
         <module>gateway-base/gateway-config</module>
@@ -44,13 +43,7 @@
 
             <dependency>
                 <groupId>com.can</groupId>
-                <artifactId>gateway-service</artifactId>
-                <version>1.0-SNAPSHOT</version>
-            </dependency>
-
-            <dependency>
-                <groupId>com.can</groupId>
-                <artifactId>gateway-provider-impl</artifactId>
+                <artifactId>gateway-core</artifactId>
                 <version>1.0-SNAPSHOT</version>
             </dependency>
 

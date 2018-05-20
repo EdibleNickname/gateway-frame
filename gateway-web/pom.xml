@@ -35,17 +35,7 @@
 
         <dependency>
             <groupId>com.can</groupId>
-            <artifactId>gateway-service</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>com.can</groupId>
-            <artifactId>gateway-provider-impl</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>com.can</groupId>
-            <artifactId>gateway-config</artifactId>
+            <artifactId>gateway-core</artifactId>
         </dependency>
 
     </dependencies>

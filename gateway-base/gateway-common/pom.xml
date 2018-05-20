@@ -13,5 +13,6 @@
     <artifactId>gateway-common</artifactId>
     <packaging>jar</packaging>
     <name>gateway-common</name>
+    <description>这个模块到时将以jar包的形式导入项目</description>
 
 </project>
