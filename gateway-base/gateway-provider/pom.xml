@@ -9,16 +9,7 @@
         <relativePath>../../pom.xml</relativePath>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-
-    <artifactId>gateway-service</artifactId>
     <packaging>jar</packaging>
-    <name>gateway-service</name>
-
-    <dependencies>
-        <dependency>
-            <groupId>com.can</groupId>
-            <artifactId>gateway-repository</artifactId>
-        </dependency>
-    </dependencies>
+    <artifactId>gateway-provider</artifactId>
 
 </project>

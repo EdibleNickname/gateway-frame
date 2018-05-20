@@ -10,9 +10,9 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>gateway-service</artifactId>
+    <artifactId>gateway-provider-impl</artifactId>
     <packaging>jar</packaging>
-    <name>gateway-service</name>
+    <name>gateway-provider-impl</name>
 
     <dependencies>
         <dependency>

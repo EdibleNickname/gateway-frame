@@ -15,10 +15,12 @@
 
     <modules>
         <module>gateway-web</module>
+        <module>gateway-core/gateway-provider-impl</module>
         <module>gateway-core/gateway-service</module>
+        <module>gateway-base/gateway-provider</module>
+        <module>gateway-base/gateway-repository</module>
         <module>gateway-base/gateway-config</module>
         <module>gateway-base/gateway-common</module>
-        <module>gateway-base/gateway-repository</module>
     </modules>
 
     <groupId>com.can</groupId>
@@ -36,13 +38,25 @@
 
             <dependency>
                 <groupId>com.can</groupId>
-                <artifactId>gateway-repository</artifactId>
+                <artifactId>gateway-service</artifactId>
                 <version>1.0-SNAPSHOT</version>
             </dependency>
 
             <dependency>
                 <groupId>com.can</groupId>
-                <artifactId>gateway-service</artifactId>
+                <artifactId>gateway-provider-impl</artifactId>
+                <version>1.0-SNAPSHOT</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.can</groupId>
+                <artifactId>gateway-provider</artifactId>
+                <version>1.0-SNAPSHOT</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.can</groupId>
+                <artifactId>gateway-repository</artifactId>
                 <version>1.0-SNAPSHOT</version>
             </dependency>
 
