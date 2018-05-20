@@ -3,3 +3,18 @@
 logging:
   file: web-frame.log
   path: F:\\GitHub\\log\\gateway-frame
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/web-frame?useUnicode=true&characterEncoding=utf-8&useSSL=false
+    username: root
+    password: 123456
+  jpa:
+    database: MYSQL
+    show-sql: true
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    hibernate:
+      ddl-auto: update
+    open-in-view: true
+

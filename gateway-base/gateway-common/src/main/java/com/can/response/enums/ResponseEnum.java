@@ -7,17 +7,13 @@ package com.can.response.enums;
  */
 public enum ResponseEnum {
 
-	/**
-	 * 请求成功响应
-	 */
+	/** 请求成功响应 */
 	SUCCESS(200, "请求成功"),
-	/**
-	 * 权限相关的响应
-	 */
+
+	/** 权限相关的响应 */
 	UNAUTHORIZED(401, "账号未授权"),
-	/**
-	 * 未知的错误响应
-	 */
+
+	/** 未知的错误响应 */
 	FAILURE(-999, "未知错误");
 
 	private Integer code;

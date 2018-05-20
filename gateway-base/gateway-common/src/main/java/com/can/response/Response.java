@@ -13,19 +13,13 @@ public class Response<T> implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	/**
-	 * http响应码
-	 */
+	/** http响应码 */
 	private Integer code;
 
-	/**
-	 * 给予前端的提示信息
-	 */
+	/** 给予前端的提示信息 */
 	private String message;
 
-	/**
-	 * 返回结果
-	 */
+	/** 返回结果 */
 	private T result;
 
 	public Response() {
