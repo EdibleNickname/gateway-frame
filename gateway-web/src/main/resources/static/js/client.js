@@ -131,9 +131,16 @@ $(function () {
     }
 
     function showResponse(statusCode, message) {
-        $response
-            .empty()
-            .text("status code: " + statusCode + "\n-------------------------\n" + message);
+
+        if(message.code != undefined && message.code == 401) {
+            $response
+                .empty()
+                .text("status code: " + message.code + "\n-------------------------\n" + message.result.errorMsg);
+        } else {
+            $response
+                .empty()
+                .text("status code: " + statusCode + "\n-------------------------\n" + message);
+        }
     }
 
     // REGISTER EVENT LISTENERS =============================================================
@@ -174,6 +181,7 @@ $(function () {
             contentType: "application/json; charset=utf-8",
             headers: createAuthorizationTokenHeader(),
             success: function (data, textStatus, jqXHR) {
+
                 showResponse(jqXHR.status, data);
             },
             error: function (jqXHR, textStatus, errorThrown) {

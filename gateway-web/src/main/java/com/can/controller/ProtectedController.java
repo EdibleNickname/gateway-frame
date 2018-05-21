@@ -21,4 +21,5 @@ public class ProtectedController {
 	public ResponseEntity<?> getProtectedGreeting() {
 		return ResponseEntity.ok("这是一个受保护的方法，只有admin才能访问,恭喜你返回成功，admin用户");
 	}
+
 }

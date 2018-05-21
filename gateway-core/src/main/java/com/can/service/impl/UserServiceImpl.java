@@ -1,10 +1,11 @@
 package com.can.service.impl;
 
+import com.can.dao.UserMapper;
 import com.can.entity.User;
-import com.can.repository.UserRepository;
 import com.can.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import javax.annotation.Resource;
 
 /**
  * @description: 
@@ -16,13 +17,14 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserServiceImpl implements UserService {
 
-	@Autowired
-	private UserRepository userRepository;
+	@Resource
+	private UserMapper userMapper;
 
 	@Override
 	public User findUserByUserName(String userName) {
-
-		return userRepository.findByUserName(userName);
-
+		User user = userMapper.selectUserByUserName(userName);
+		user.setRoleSet(userMapper.getRolesByUserId(user.getUserId()));
+		return user;
 	}
+
 }

@@ -1,7 +1,7 @@
 package com.can.security.jwt.user;
 
+import com.can.entity.Role;
 import com.can.entity.User;
-import com.can.entity.UserRole;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
@@ -25,15 +25,16 @@ public final class JwtUserFactory {
         return new JwtUser(
                 user.getUserName(),
                 user.getPassword(),
-                user.isEnabled(),
+                user.getEnabled(),
                 user.getLastPasswordResetDate(),
-				mapToGrantedAuthorities(user.getUserRoles())
+				mapToGrantedAuthorities(user.getRoleSet())
         );
     }
 
-    private static List<GrantedAuthority> mapToGrantedAuthorities(Set<UserRole> userRoleSet) {
+    private static List<GrantedAuthority> mapToGrantedAuthorities(Set<Role> userRoleSet) {
+
         return userRoleSet.stream()
-                .map(userRole -> new SimpleGrantedAuthority(userRole.getRole().getRoleName()))
+                .map(userRole -> new SimpleGrantedAuthority(userRole.getRoleName()))
                 .collect(Collectors.toList());
     }
 }

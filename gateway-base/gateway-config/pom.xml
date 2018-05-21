@@ -57,7 +57,7 @@
 
         <dependency>
             <groupId>com.can</groupId>
-            <artifactId>gateway-repository</artifactId>
+            <artifactId>gateway-dao</artifactId>
         </dependency>
 
     </dependencies>
