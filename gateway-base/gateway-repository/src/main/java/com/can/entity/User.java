@@ -4,6 +4,7 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.Set;
 
 /**
  * @description:
@@ -33,5 +34,8 @@ public class User {
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "last_password_reset_date")
 	private Date lastPasswordResetDate;
+
+	@OneToMany(mappedBy="user", cascade=CascadeType.ALL, fetch = FetchType.EAGER)
+	private Set<UserRole> userRoles;
 
 }
