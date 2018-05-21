@@ -1,12 +1,13 @@
 package com.can.security.jwt.user;
 
+import com.can.dao.UserMapper;
 import com.can.entity.User;
-import com.can.repository.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+
+import javax.annotation.Resource;
 
 /**
  * @description: 通过用户名查询出对应的用户，并将其转为JwtUser
@@ -18,13 +19,14 @@ import org.springframework.stereotype.Service;
 @Service
 public class JwtUserDetailsService implements UserDetailsService {
 
-	@Autowired
-	private UserRepository userRepository;
+	@Resource
+	private UserMapper userMapper;
 
 	@Override
 	public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
 
-		User user = userRepository.findByUserName(userName);
+		User user = userMapper.selectUserByUserName(userName);
+		user.setRoleSet(userMapper.getRolesByUserId(user.getUserId()));
 
 		if (user == null) {
 			throw new UsernameNotFoundException(String.format("用户: %s 不存在！", userName));

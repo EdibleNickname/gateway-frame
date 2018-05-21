@@ -7,10 +7,14 @@ package com.can.response.enums;
  */
 public enum RoleName {
 
+	/** 游客 */
 	VISITOR("ROLE_VISITOR", "游客"),
+	/** 读者 */
 	READER("ROLE_READER", "读者"),
+	/** 作者 */
 	WRITER("ROLE_WRITER", "作者"),
-	ADMIN("ROLE_ADMIN", "超級管理者");
+	/** 超级管理员 */
+	ADMIN("ROLE_ADMIN", "超級管理员");
 
 	/** 角色名 */
 	private String roleName;

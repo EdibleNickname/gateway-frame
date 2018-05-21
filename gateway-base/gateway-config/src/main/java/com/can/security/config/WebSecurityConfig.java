@@ -99,7 +99,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				"/favicon.ico"
 			).permitAll()
 			// 其他的请求都需要验证
-			.anyRequest().authenticated();
+			.anyRequest().authenticated()
+			// 需要用户登录时，从定向到哪里
+			.and()
+			.formLogin()
+			.loginPage("/login")
+			.permitAll();
 
 		// 在返回直接先进行过滤
 		httpSecurity

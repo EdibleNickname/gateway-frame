@@ -5,6 +5,7 @@ import com.can.response.Response;
 import com.can.response.enums.ResponseEnum;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.security.access.AccessDeniedException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -40,6 +41,15 @@ public class GlobalExceptionHandler {
 		//认证失败异常
 		if (exception instanceof AuthenticationException) {
 			AuthenticationException ex = (AuthenticationException)exception;
+			response.setCode(ResponseEnum.UNAUTHORIZED.getCode());
+			response.setMessage(ResponseEnum.UNAUTHORIZED.getMessage());
+			map.put(MSG_KEY, ex.getMessage());
+			response.setResult(map);
+			return response;
+		}
+
+		if (exception instanceof AccessDeniedException) {
+			AccessDeniedException ex = (AccessDeniedException)exception;
 			response.setCode(ResponseEnum.UNAUTHORIZED.getCode());
 			response.setMessage(ResponseEnum.UNAUTHORIZED.getMessage());
 			map.put(MSG_KEY, ex.getMessage());

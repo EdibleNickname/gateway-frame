@@ -11,7 +11,7 @@ public enum ResponseEnum {
 	SUCCESS(200, "请求成功"),
 
 	/** 权限相关的响应 */
-	UNAUTHORIZED(401, "账号未授权"),
+	UNAUTHORIZED(401, "授权不够"),
 
 	/** 未知的错误响应 */
 	FAILURE(-999, "未知错误");
