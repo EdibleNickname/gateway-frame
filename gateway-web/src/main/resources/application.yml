@@ -18,3 +18,16 @@ spring:
       ddl-auto: update
     open-in-view: true
 
+
+# jwt configuration
+jwt:
+  secret: MySecret
+  header: Authorization
+  tokenHeader: LCN
+  expiration: 3600
+  route:
+    authentication:
+      path: /auth/**
+      refresh: refresh
+      register: /auth/register
+
