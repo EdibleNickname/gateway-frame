@@ -15,9 +15,33 @@
     <result column="role_name_zh" property="roleNameZh" jdbcType="VARCHAR" />
   </resultMap>
 
+  <resultMap id="AllUserInfoResultMap" type="com.can.entity.User" extends="BaseResultMap">
+
+    <association property="roleSet" javaType="com.can.entity.Role">
+      <id column="role_id" property="roleId" jdbcType="INTEGER" />
+      <result column="role_name" property="roleName" jdbcType="VARCHAR" />
+      <result column="role_name_zh" property="roleNameZh" jdbcType="VARCHAR" />
+    </association>
+
+    <collection property="roleSet" ofType="com.can.entity.Role">
+      <id 	column="role_id" property="roleId"/>
+      <result column="role_name" property="roleName"/>
+      <result column="role_name_zh" property="roleNameZh"/>
+    </collection>
+
+  </resultMap>
+
   <sql id="Base_Column_List" >
     user_id, user_name, password, last_password_reset_date, enabled
   </sql>
+
+  <select id="selectAllUserInfo" resultMap="AllUserInfoResultMap">
+    select u.* , r.* from user u, role r
+      WHERE u.user_id =#{userId,jdbcType=BIGINT}
+      and r.role_id
+      in
+    (select ru.role_id FROM role_user ru WHERE ru.user_id =#{userId,jdbcType=BIGINT});
+  </select>
 
   <select id="selectUserByUserName" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select

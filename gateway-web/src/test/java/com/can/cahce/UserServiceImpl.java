@@ -1,9 +1,7 @@
-package com.can;
-
+package com.can.cahce;
 
 import com.can.entity.User;
 import com.can.service.UserService;
-import com.can.util.json.JsonUtil;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -11,20 +9,26 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.annotation.Resource;
 
+/**
+ * @description:
+ * @author: LCN
+ * @date: 2018-05-22 12:53
+ */
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class ApplicationLaucherTests {
+public class UserServiceImpl {
 
 	@Resource
 	private UserService userService;
 
 	@Test
-	public void contextLoads() {
+	public void testCache() {
 
+		System.out.println("開始");
 		User user = userService.findUserByUserName("admin");
+		System.out.println(user.toString());
 
-		System.out.println(JsonUtil.toJsonString(user));
-
+		User user1 = userService.findUserByUserName("admin");
+		System.out.println(user1.toString());
 	}
-
 }

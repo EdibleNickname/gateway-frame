@@ -47,7 +47,7 @@ public class GlobalExceptionHandler {
 			response.setResult(map);
 			return response;
 		}
-
+		// 权限不够，直接返回url
 		if (exception instanceof AccessDeniedException) {
 			AccessDeniedException ex = (AccessDeniedException)exception;
 			response.setCode(ResponseEnum.UNAUTHORIZED.getCode());

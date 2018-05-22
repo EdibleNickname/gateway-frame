@@ -1,6 +1,6 @@
 package com.can.security.jwt.filter;
 
-import com.can.security.jwt.utils.JwtTokenUtil;
+import com.can.security.jwt.util.JwtTokenUtil;
 import io.jsonwebtoken.ExpiredJwtException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

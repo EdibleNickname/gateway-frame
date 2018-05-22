@@ -1,7 +1,7 @@
 package com.can.security.config;
 
 import com.can.security.jwt.filter.JwtAuthorizationTokenFilter;
-import com.can.security.jwt.utils.JwtTokenUtil;
+import com.can.security.jwt.util.JwtTokenUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
@@ -99,12 +99,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				"/favicon.ico"
 			).permitAll()
 			// 其他的请求都需要验证
-			.anyRequest().authenticated()
-			// 需要用户登录时，从定向到哪里
-			.and()
-			.formLogin()
-			.loginPage("/login")
-			.permitAll();
+			.anyRequest().authenticated();
 
 		// 在返回直接先进行过滤
 		httpSecurity

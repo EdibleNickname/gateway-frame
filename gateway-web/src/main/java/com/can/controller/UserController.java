@@ -2,7 +2,7 @@ package com.can.controller;
 
 import com.can.entity.User;
 import com.can.security.jwt.user.JwtUser;
-import com.can.security.jwt.utils.JwtTokenUtil;
+import com.can.security.jwt.util.JwtTokenUtil;
 import com.can.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;

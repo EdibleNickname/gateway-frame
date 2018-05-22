@@ -1,4 +1,4 @@
-package com.can.security.jwt.utils;
+package com.can.security.jwt.util;
 
 import com.can.security.jwt.user.JwtUser;
 import io.jsonwebtoken.Claims;
