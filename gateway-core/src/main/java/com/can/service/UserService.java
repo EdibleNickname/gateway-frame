@@ -11,6 +11,9 @@ import com.can.entity.User;
 
 public interface UserService {
 
+	@interface UserGrop{
+	}
+
 	/**
 	 * 通过用户名查询整个用户信息
 	 * @param userName 用户名

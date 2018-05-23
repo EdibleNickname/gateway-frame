@@ -1,15 +1,16 @@
 package com.can.controller;
 
 import com.can.entity.User;
+import com.can.model.UserDto;
 import com.can.security.jwt.user.JwtUser;
 import com.can.security.jwt.util.JwtTokenUtil;
 import com.can.service.UserService;
+import com.can.util.json.JsonUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -53,6 +54,13 @@ public class UserController {
 
 		JwtUser user = (JwtUser) jwtUserDetailsService.loadUserByUsername(username);
 		return user;
+	}
+
+	@PostMapping("/userdto")
+	public UserDto getUserDto(@Validated @RequestBody UserDto userDto) {
+		System.out.println(JsonUtil.toJsonString(userDto));
+		userDto.setName("新的名字");
+		return userDto;
 	}
 
 }

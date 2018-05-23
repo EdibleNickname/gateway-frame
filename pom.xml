@@ -24,6 +24,7 @@
         <jackson.version>2.9.5</jackson.version>
         <email.version>1.6.1</email.version>
         <freemarker.version>2.3.28</freemarker.version>
+        <hibernate.validator.version>6.0.10.Final</hibernate.validator.version>
     </properties>
 
     <modules>
@@ -91,6 +92,13 @@
                 <groupId>org.freemarker</groupId>
                 <artifactId>freemarker</artifactId>
                 <version>${freemarker.version}</version>
+            </dependency>
+
+            <!--参数验证-->
+            <dependency>
+                <groupId>org.hibernate.validator</groupId>
+                <artifactId>hibernate-validator</artifactId>
+                <version>${hibernate.validator.version}</version>
             </dependency>
 
             <dependency>

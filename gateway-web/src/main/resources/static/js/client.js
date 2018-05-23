@@ -190,6 +190,30 @@ $(function () {
         });
     });
 
+    // --------------------------------------------------------------------------
+
+    $("#testBtn").click(function () {
+        console.log("点击了");
+        $.ajax({
+            url: "/userdto",
+            type: "POST",
+            data: "{\"name\": \"姓名\",\"password\": \"密码\", \"test\": \"test\"}",
+            contentType: "application/json; charset=utf-8",
+            headers: createAuthorizationTokenHeader(),
+            success: function (data, textStatus, jqXHR) {
+                console.log(JSON.stringify(data));
+                console.log(JSON.stringify(textStatus));
+                console.log(JSON.stringify(jqXHR));
+                showResponse(jqXHR.status, data);
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                showResponse(jqXHR.status, errorThrown);
+            }
+        });
+    });
+
+    // ---------------------------------------------------------------------------
+
     $loggedIn.click(function () {
         $loggedIn
             .toggleClass("text-hidden")

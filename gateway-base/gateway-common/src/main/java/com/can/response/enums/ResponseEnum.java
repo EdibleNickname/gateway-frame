@@ -10,6 +10,9 @@ public enum ResponseEnum {
 	/** 请求成功响应 */
 	SUCCESS(200, "请求成功"),
 
+	/** 请求参数错误 */
+	PARAMETER_ERROR(400, "参数错误"),
+
 	/** 权限相关的响应 */
 	UNAUTHORIZED(401, "权限不够"),
 
