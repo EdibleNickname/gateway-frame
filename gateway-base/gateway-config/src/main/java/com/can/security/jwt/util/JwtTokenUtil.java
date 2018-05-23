@@ -1,4 +1,4 @@
-package com.can.security.jwt.utils;
+package com.can.security.jwt.util;
 
 import com.can.security.jwt.user.JwtUser;
 import io.jsonwebtoken.Claims;
@@ -37,11 +37,8 @@ public class JwtTokenUtil {
 	private final static String CLAIM_KEY_CREATED = "iat";
 
 	/** 生成jwt的密钥 */
-	@Value("${jwt.secret}")
+	@Value("${jwt.secret:DefaultSecret}")
 	private String secret;
-
-	/** 默认的密钥, 当用户的没有设置secret,使用这个作为密钥 */
-	private final static String DEFAULT_SECRET = "DefaultSecret";
 
 	/** 时间工具 */
 	private Clock clock = DefaultClock.INSTANCE;
@@ -106,15 +103,13 @@ public class JwtTokenUtil {
 
 		Map<String, Object> claims = new HashMap<>(32);
 
-		String jwtSecret = secret == null ? DEFAULT_SECRET : secret;
-
 		claims.put(CLAIM_KEY_USERNAME, userDetails.getUsername());
 		claims.put(CLAIM_KEY_CREATED, new Date());
 
 		return Jwts.builder()
 				.setClaims(claims)
 				.setExpiration(generateExpirationDate(expiration))
-				.signWith(SIGNATUREALGORITHM, jwtSecret)
+				.signWith(SIGNATUREALGORITHM, secret)
 				.compact();
 	}
 
@@ -179,12 +174,10 @@ public class JwtTokenUtil {
 	 */
 	private Claims getAllClaimsFromToken(String token) {
 
-		String jwtSecret = secret == null ? DEFAULT_SECRET : secret;
-
 		Claims claims;
 		try {
 			claims = Jwts.parser()
-					.setSigningKey(jwtSecret)
+					.setSigningKey(secret)
 					.parseClaimsJws(token)
 					.getBody();
 		} catch (Exception e) {
@@ -208,7 +201,7 @@ public class JwtTokenUtil {
 	 * 判断token的创建日期是否在密码最后一次重置之前
 	 * @param created
 	 *
-	 * @param lastPasswordReset
+	 * @param lastPasswordReset 上次密码重置时间
 	 * @return
 	 */
 	private Boolean isCreatedBeforeLastPasswordReset(Date created, Date lastPasswordReset) {
@@ -228,7 +221,7 @@ public class JwtTokenUtil {
 	/**
 	 * 生成token过期的时间
 	 *
-	 * @param expiration
+	 * @param expiration 多久过期(单位：秒)
 	 * @return
 	 */
 	private Date generateExpirationDate(Long expiration) {
@@ -238,29 +231,28 @@ public class JwtTokenUtil {
 	/**
 	 * 生成token
 	 *
-	 * @param claims
-	 * @param subject
-	 * @param expiration
+	 * @param claims  声明
+	 * @param subject 主题
+	 * @param expiration 多久过期(单位：秒)
 	 * @return
 	 */
 	private String doGenerateToken(Map<String, Object> claims, String subject, Long expiration) {
 		final Date createdDate = clock.now();
 		final Date expirationDate = calculateExpirationDate(createdDate, expiration);
-		final String mySercet = secret == null ? DEFAULT_SECRET : secret;
 
 		return Jwts.builder()
 				.setClaims(claims)
 				.setSubject(subject)
 				.setIssuedAt(createdDate)
 				.setExpiration(expirationDate)
-				.signWith(SIGNATUREALGORITHM, mySercet)
+				.signWith(SIGNATUREALGORITHM, secret)
 				.compact();
 	}
 
 	/**
 	 * 生成token过期的时间
-	 * @param createdDate
-	 * @param expiration
+	 * @param createdDate 开始时间
+	 * @param expiration 多久过期(单位：秒)
 	 *
 	 * @return
 	 */

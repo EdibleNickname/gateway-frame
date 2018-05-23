@@ -11,6 +11,10 @@ public interface UserMapper {
 
     Set<Role> getRolesByUserId(Long userId);
 
+    /** TODO: 2018/5/22 待完善
+    User selectAllUserInfo(Long userId);
+    */
+
     int deleteByPrimaryKey(Long userId);
 
     int insert(User record);
