@@ -7,7 +7,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 
 /**
- * @description:
+ * @description: Json工具
  * @author: LCN
  * @date: 2018-05-22 14:38
  */
@@ -25,19 +25,11 @@ public class JsonUtil {
 	private JsonUtil(){
 	}
 
-/*	public static JsonUtil getInstance() {
-
-		if(mJosnUtil == null){
-			synchronized (JsonUtil.class) {
-				if(mJosnUtil == null){
-					mJosnUtil = new JsonUtil();
-					mJosnUtil.mapper = new ObjectMapper();
-				}
-			}
-		}
-		return mJosnUtil;
-	}*/
-
+	/**
+	 * bean转字符串
+	 * @param entity
+	 * @return
+	 */
 	public static String toJsonString(Object entity) {
 
 		String str = "";
@@ -51,6 +43,13 @@ public class JsonUtil {
 		return str;
 	}
 
+	/**
+	 * 字符串转bean
+	 * @param jsonStr
+	 * @param T
+	 * @param <T>
+	 * @return
+	 */
 	public static <T> T toJsonObject(String jsonStr, Class<T> T) {
 		T obj = null;
 		try {

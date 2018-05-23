@@ -53,20 +53,34 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	private String authenticationPath;
 
 
-	/** 密码加密器 */
+	/**
+	 * 密码加密器
+	 *
+	 * @return
+	 */
 	@Bean
 	public PasswordEncoder passwordEncoderBean() {
 		return new BCryptPasswordEncoder();
 	}
 
-	/** 验证管理器 */
+	/**
+	 * 验证管理器
+	 *
+	 * @return
+	 * @throws Exception
+	 */
 	@Bean
 	@Override
 	public AuthenticationManager authenticationManagerBean() throws Exception {
 		return super.authenticationManagerBean();
 	}
 
-	/** url过滤器 */
+	/**
+	 * url过滤器
+	 *
+	 * @return
+	 * @throws Exception
+	 */
 	@Bean
 	public JwtAuthorizationTokenFilter authenticationTokenFilterBean() throws Exception {
 		return new JwtAuthorizationTokenFilter();

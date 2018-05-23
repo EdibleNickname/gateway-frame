@@ -32,8 +32,17 @@ spring:
         max-idle: 8
         min-idle: 0
         max-wait: 100ms
+  freemarker:
+    checkTemplateLocation: false
+  # 邮箱配置
+  mail:
+    username: 2659471464@qq.com
+    password: ijxmrdmxhhecdjai
+    default-encoding: UTF-8
+    host: smtp.qq.com
+    port: 465
 
-
+# myBatis
 mybatis:
   mapper-locations: classpath*:mapper/*.xml
 
@@ -48,4 +57,3 @@ jwt:
       path: /auth/**
       refresh: refresh
       register: /auth/register
-

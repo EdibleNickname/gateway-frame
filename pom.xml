@@ -22,6 +22,8 @@
         <mybatis.starter.version>1.3.2</mybatis.starter.version>
         <druid.version>1.1.9</druid.version>
         <jackson.version>2.9.5</jackson.version>
+        <email.version>1.6.1</email.version>
+        <freemarker.version>2.3.28</freemarker.version>
     </properties>
 
     <modules>
@@ -41,23 +43,26 @@
         <dependencies>
 
             <dependency>
-                <groupId>io.jsonwebtoken</groupId>
-                <artifactId>jjwt</artifactId>
-                <version>${jjwt.version}</version>
-            </dependency>
-
-            <dependency>
                 <groupId>org.mybatis.spring.boot</groupId>
                 <artifactId>mybatis-spring-boot-starter</artifactId>
                 <version>${mybatis.starter.version}</version>
             </dependency>
 
+            <!--jwt-->
+            <dependency>
+                <groupId>io.jsonwebtoken</groupId>
+                <artifactId>jjwt</artifactId>
+                <version>${jjwt.version}</version>
+            </dependency>
+
+            <!--druid连接池-->
             <dependency>
                 <groupId>com.alibaba</groupId>
                 <artifactId>druid</artifactId>
                 <version>${druid.version}</version>
             </dependency>
 
+            <!--jackson-->
             <dependency>
                 <groupId>com.fasterxml.jackson.core</groupId>
                 <artifactId>jackson-core</artifactId>
@@ -74,6 +79,19 @@
                 <version>${jackson.version}</version>
             </dependency>
 
+            <!-- email -->
+            <dependency>
+                <groupId>com.sun.mail</groupId>
+                <artifactId>javax.mail</artifactId>
+                <version>${email.version}</version>
+            </dependency>
+
+            <!-- 用于发送邮件的模板-->
+            <dependency>
+                <groupId>org.freemarker</groupId>
+                <artifactId>freemarker</artifactId>
+                <version>${freemarker.version}</version>
+            </dependency>
 
             <dependency>
                 <groupId>com.can</groupId>

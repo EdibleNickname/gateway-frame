@@ -32,7 +32,11 @@ import java.time.Duration;
 @EnableCaching
 public class RedisConfig extends CachingConfigurerSupport {
 
-	/** 定义缓存数据 key 生成策略的bean  包名+类名+方法名+所有参数*/
+	/**
+	 * 定义缓存数据 key 生成策略的bean  包名+类名+方法名+所有参数
+	 *
+	 * @return
+	 */
 	@Bean
 	public KeyGenerator wiselyKeyGenerator() {
 		return new KeyGenerator() {
@@ -49,6 +53,12 @@ public class RedisConfig extends CachingConfigurerSupport {
 		};
 	}
 
+	/**
+	 * 缓存管理者
+	 *
+	 * @param connectionFactory
+	 * @return
+	 */
 	@Bean
 	public CacheManager cacheManager(RedisConnectionFactory connectionFactory) {
 		RedisCacheWriter redisCacheWriter = RedisCacheWriter.nonLockingRedisCacheWriter(connectionFactory);
@@ -63,7 +73,12 @@ public class RedisConfig extends CachingConfigurerSupport {
 		// return RedisCacheManager.create(connectionFactory);
 	}
 
-	/** 设置序列化 */
+	/**
+	 * 设置序列化
+	 *
+	 * @param factory
+	 * @return
+	 */
 	@Bean
 	public RedisTemplate<String, String> redisTemplate(RedisConnectionFactory factory) {
 
@@ -107,6 +122,12 @@ public class RedisConfig extends CachingConfigurerSupport {
 		return template;
 	}*/
 
+	/**
+	 * 注入 redisTemple
+	 *
+	 * @param redisConnectionFactory
+	 * @return
+	 */
 	@Bean
 	@ConditionalOnMissingBean(StringRedisTemplate.class)
 	public StringRedisTemplate stringRedisTemplate(RedisConnectionFactory redisConnectionFactory) {
