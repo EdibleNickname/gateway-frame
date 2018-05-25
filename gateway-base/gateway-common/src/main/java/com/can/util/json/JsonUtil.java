@@ -46,14 +46,14 @@ public class JsonUtil {
 	/**
 	 * 字符串转bean
 	 * @param jsonStr
-	 * @param T
+	 * @param clazz
 	 * @param <T>
 	 * @return
 	 */
-	public static <T> T toJsonObject(String jsonStr, Class<T> T) {
+	public static <T> T toJsonObject(String jsonStr, Class<T> clazz) {
 		T obj = null;
 		try {
-			obj = mapper.readValue(jsonStr, T);
+			obj = mapper.readValue(jsonStr, clazz);
 		} catch (JsonParseException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
