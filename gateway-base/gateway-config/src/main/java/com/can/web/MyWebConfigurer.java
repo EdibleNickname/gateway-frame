@@ -13,8 +13,12 @@ import org.springframework.context.annotation.Configuration;
 // extends WebMvcConfigurationSupport
 
 @Configuration
-public class WebUtilConfigurer {
+public class MyWebConfigurer {
 
+	/**
+	 * 邮件发送工具
+	 * @return
+	 */
 	@Bean
 	public EmailUtil getEmailUtil() {
 		return new EmailUtil();

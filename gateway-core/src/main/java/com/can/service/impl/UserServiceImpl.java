@@ -5,6 +5,7 @@ import com.can.entity.User;
 import com.can.service.UserService;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 
@@ -21,6 +22,7 @@ public class UserServiceImpl implements UserService {
 	@Resource
 	private UserMapper userMapper;
 
+	@Transactional
 	@Cacheable(value = "role")
 	@Override
 	public User findUserByUserName(String userName) {
