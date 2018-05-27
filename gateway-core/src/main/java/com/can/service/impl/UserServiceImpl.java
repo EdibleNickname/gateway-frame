@@ -32,4 +32,12 @@ public class UserServiceImpl implements UserService {
 		return user;
 	}
 
+/*
+	@Override
+	public Page<User> searchPage(PageRequset requset) {
+
+		// TODO: 2018/5/25 查询数据数据
+		return null;
+	}*/
+	
 }

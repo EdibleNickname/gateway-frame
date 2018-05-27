@@ -22,4 +22,10 @@ public interface UserService {
 	 */
 	User findUserByUserName(String userName);
 
+	/**
+	 * 分页查询
+	 * @param requset
+	 * @return
+	 */
+//	Page<User> searchPage(PageRequset requset);
 }

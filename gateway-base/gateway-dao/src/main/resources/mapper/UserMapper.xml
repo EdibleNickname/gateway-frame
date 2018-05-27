@@ -134,4 +134,10 @@
       enabled = #{enabled,jdbcType=BIT}
     where user_id = #{userId,jdbcType=BIGINT}
   </update>
+
+  <!--测试分页-->
+  <select id="selectAllRole" resultMap="BaseResultMap">
+    select * from user
+  </select>
+
 </mapper>

@@ -1,5 +1,6 @@
 package com.can.web;
 
+import com.can.util.PagingPlugin;
 import com.can.util.email.EmailUtil;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -22,6 +23,12 @@ public class MyWebConfigurer {
 	@Bean
 	public EmailUtil getEmailUtil() {
 		return new EmailUtil();
+	}
+
+
+	@Bean
+	public PagingPlugin getPagingPlugin() {
+		return new PagingPlugin(1,20,true,false,false);
 	}
 }
 
