@@ -5,6 +5,8 @@ import com.can.util.email.EmailUtil;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import java.util.Properties;
+
 /**
  * @description: 加载工具类
  * @author: LCN
@@ -26,9 +28,18 @@ public class MyWebConfigurer {
 	}
 
 
+	/** 注册分页插件 */
 	@Bean
 	public PagingPlugin getPagingPlugin() {
-		return new PagingPlugin(1,20,true,false,false);
+
+		PagingPlugin pagePlugin = new PagingPlugin();
+		Properties properties = new Properties();
+		properties.setProperty("dbType", "mysql");
+		properties.setProperty("pageSqlId", ".*Page$");
+		properties.setProperty("pageSize", "10");
+		properties.setProperty("pageNum", "1");
+		pagePlugin.setProperties(properties);
+		return pagePlugin;
 	}
 }
 

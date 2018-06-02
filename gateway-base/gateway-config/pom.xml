@@ -68,6 +68,13 @@
             <artifactId>hibernate-validator</artifactId>
         </dependency>
 
+        <!-- aop支持 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-aop</artifactId>
+        </dependency>
+
+
         <dependency>
             <groupId>com.can</groupId>
             <artifactId>gateway-common</artifactId>

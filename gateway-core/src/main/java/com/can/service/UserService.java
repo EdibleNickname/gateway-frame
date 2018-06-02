@@ -2,6 +2,8 @@ package com.can.service;
 
 
 import com.can.entity.User;
+import com.can.util.Page;
+import com.can.util.UserRequest;
 
 /**
  * @description:
@@ -27,5 +29,5 @@ public interface UserService {
 	 * @param requset
 	 * @return
 	 */
-//	Page<User> searchPage(PageRequset requset);
+	Page<User> searchUserPage(UserRequest requset);
 }

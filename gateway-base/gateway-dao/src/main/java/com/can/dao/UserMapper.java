@@ -2,7 +2,7 @@ package com.can.dao;
 
 import com.can.entity.Role;
 import com.can.entity.User;
-import com.can.util.UserPage;
+import com.can.util.PageParam;
 
 import java.util.List;
 import java.util.Set;
@@ -29,12 +29,6 @@ public interface UserMapper {
 
     int updateByPrimaryKey(User record);
 
-    /**
-     * 测试分页用
-     *
-     * @param user 参数
-     * @return
-     */
-    List<User> selectAllRole(UserPage user);
+    List<User> userPage(PageParam pageParam);
 
 }

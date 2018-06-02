@@ -3,6 +3,8 @@ package com.can.service.impl;
 import com.can.dao.UserMapper;
 import com.can.entity.User;
 import com.can.service.UserService;
+import com.can.util.Page;
+import com.can.util.UserRequest;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -32,12 +34,16 @@ public class UserServiceImpl implements UserService {
 		return user;
 	}
 
-/*
+
 	@Override
-	public Page<User> searchPage(PageRequset requset) {
+	public Page<User> searchUserPage(UserRequest requset) {
 
 		// TODO: 2018/5/25 查询数据数据
-		return null;
-	}*/
+
+		Page<User> page = new Page<>();
+		page.setResult(userMapper.userPage(requset));
+
+		return page;
+	}
 	
 }

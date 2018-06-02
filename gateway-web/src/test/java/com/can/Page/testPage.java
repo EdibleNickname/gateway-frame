@@ -1,8 +1,9 @@
 package com.can.Page;
 
-import com.can.dao.UserMapper;
 import com.can.entity.User;
-import com.can.util.UserPage;
+import com.can.service.UserService;
+import com.can.util.Page;
+import com.can.util.UserRequest;
 import com.can.util.json.JsonUtil;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -10,7 +11,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.annotation.Resource;
-import java.util.List;
 
 /**
  * @description:
@@ -23,25 +23,26 @@ import java.util.List;
 public class testPage {
 
 	@Resource
-	private UserMapper userMapper;
+	private UserService userService;
 
 	/**
 	 * 测试分页
 	 */
 	@Test
 	public void testPage() {
-		UserPage page = new UserPage();
-		page.setPage(1);
-		page.setPageSize(2);
-		List<User> list = userMapper.selectAllRole(page);
 
-		System.out.println(JsonUtil.toJsonString(list));
+		UserRequest request = new UserRequest();
+		request.setPageNum(2);
+		request.setPageSize(2);
 
-		// 总条数
-		System.out.println(page.getTotal());
+		Page<User> page = userService.searchUserPage(request);
 
-		// 总页数
-		System.out.println(page.getTotalPage());
+		System.out.println(JsonUtil.toJsonString(page));
+
+		System.out.println("当前的页数"+page.getCurrentPage());
+
+		System.out.println("总页数:"+page.getTotalPage());
+
 	}
 
 }
